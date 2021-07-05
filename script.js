@@ -45,6 +45,8 @@ const init = function(){
     scores = [0,0];
     activePlayer = 0;
     playing = true;
+    document.querySelector(`#name--0`).textContent =  'Player 1';
+    document.querySelector(`#name--1`).textContent =  'Player 2';
 
 
 }
@@ -86,11 +88,17 @@ btnHold.addEventListener('click',function()
             scores[activePlayer] += currentScore;
             document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
     
-            if(scores[activePlayer] >= 100)
+            if(scores[activePlayer] >= 10)
             {
                 document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
                 document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
                  playing = false;
+                
+
+                 
+                 document.querySelector(`#name--${activePlayer}`).textContent =  'Winner';
+                 document.querySelector(`#name--${(Number(activePlayer) + 1)%2}`).textContent =  'Looser';
+                 
     
             }
             else{
